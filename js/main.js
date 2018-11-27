@@ -23,13 +23,16 @@ function login(){
     if(document.getElementById("nickname").value=="" || document.getElementById("password").value==""){
         alert("Fill the fields to login!");
         cleanFields();
+        return false;
     
     }else if(checkLogin()){
         alert("User does not exist or password is wrong!");
         cleanFields();
+        return false;
 
     }else{  
         window.location.href="./chatmenu.html";
+        return true;
     }
 }
 

@@ -19,7 +19,7 @@ firebase.database().ref('chats').on('value', function (snapshot){
         var p=document.createElement("p");
 
         d.className="container";
-        p.textContent=chats[chats.length-1].text;
+        p.textContent=chats[chats.length-1];
 
         d.appendChild(p);
 
@@ -31,14 +31,9 @@ firebase.database().ref('chats').on('value', function (snapshot){
 
 function sendMessage(){
     chat.text="Someone said: "+document.getElementById("userMessage").value;
-    firebase.database().ref().child('chats').push(chat);
-    window.location.reload();
+    firebase.database().ref().child('chats').push(chat.text);
 }
 
 function logout(){
     window.location.href="./index.html";
-}
-
-function setNickname(){
-    window.location="chatmenu.html?nickname="+document.getElementById("nickname").value;
 }
