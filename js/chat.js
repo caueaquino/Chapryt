@@ -24,7 +24,6 @@ firebase.database().ref('chats').on('value', function (snapshot){
             d.id=chats[chats.length-1].id;
             d.className="container";
             p.textContent=chats[chats.length-1].text;
-
             d.appendChild(p);
 
             var di=document.getElementById("chatt");
@@ -34,13 +33,20 @@ firebase.database().ref('chats').on('value', function (snapshot){
     });
 });
 
+function clearMessageField(){
+    document.getElementById("userMessage").value="";
+}
+
 function sendMessage(){
-    chat.text="Someone said: "+document.getElementById("userMessage").value;
-    chat.id=chats.length;   
-    chats.push(chat);
-    firebase.database().ref().child('chats').push(chats);
+    if(document.getElementById("userMessage").value!=""){    
+        chat.text="Someone said: "+document.getElementById("userMessage").value;
+        chat.id=chats.length;   
+        chats.push(chat);
+        firebase.database().ref().child('chats').push(chats);
+        clearMessageField();
+    }
 }
 
 function logout(){
-    window.location.href="./index.html";
+    window.location.href="../index.html";
 }

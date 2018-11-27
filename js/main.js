@@ -31,7 +31,7 @@ function login(){
         return false;
 
     }else{  
-        window.location.href="./chatmenu.html";
+        window.location.href="./html/chatmenu.html";
         return true;
     }
 }
